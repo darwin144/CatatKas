@@ -1,0 +1,122 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Dashboard Keuangan";
+    var expenseData = ViewBag.ExpenseData as List<dynamic>;
+
+    var selectedMonth = ViewBag.SelectedMonth;
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Bulan</label>
+                <select id="month" class="form-select">
+                    @for (int i = 1; i <= 12; i++)
+                    {
+                        var culture = new System.Globalization.CultureInfo("id-ID");
+                        string namaBulan = culture.DateTimeFormat.GetMonthName(i);
+
+                        if (ViewBag.SelectedMonth == i)
+                        {
+                            <option value="@i" selected="selected">@namaBulan</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@namaBulan</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Tahun</label>
+                <select id="year" class="form-select">
+                    @for (int i = DateTime.Now.Year - 3; i <= DateTime.Now.Year; i++)
+                    {
+                        if (ViewBag.SelectedYear == i)
+                        {
+                            <option value="@i" selected="selected">@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <button type="button" class="btn btn-primary" onclick="loadChart()">
+                <span style="font-size:12px;">Filter</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Canvas Chart -->
+<canvas id="expenseChart" style="max-height:350px;"></canvas>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+    let expenseChart;
+
+
+    function loadChart() {
+        const month = document.getElementById("month").value;
+        const year = document.getElementById("year").value;
+
+        fetch(`/Home/GetDataChart?month=${month}&year=${year}`)
+            .then(response => response.json())
+            .then(rawData => {
+                console.log("Data chart:", rawData);
+
+                const labels = rawData.map(item => item.category);
+                const values = rawData.map(item => item.total);
+
+                const ctx = document.getElementById('expenseChart').getContext('2d');
+
+
+                if (expenseChart) {
+                    expenseChart.destroy();
+                }
+
+                // Buat chart baru
+                expenseChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Pengeluaran (Rp)',
+                            data: values,
+                            backgroundColor: '#36A2EB',
+                            borderColor: '#1E88E5',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return 'Rp ' + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(err => console.error("Error load chart data:", err));
+    }
+    
+    document.addEventListener("DOMContentLoaded", loadChart);
+</script>
+

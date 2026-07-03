@@ -1,0 +1,101 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Dashboard Keuangan";
+    var expenseData = ViewBag.ExpenseData as List<dynamic>;
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">📊 Dashboard Keuangan</h2>
+
+    <!-- Form Filter Bulan dan Tahun -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="get" action="@Url.Action("Index", "Dashboard")" class="row g-3 align-items-center">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Bulan</label>
+                    <select name="month" class="form-select">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            var culture = new System.Globalization.CultureInfo("id-ID");
+                            string namaBulan = culture.DateTimeFormat.GetMonthName(i);
+                            <!option value="@i" @(ViewBag.SelectedMonth == i ? "selected" : "")>@namaBulan</!option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Tahun</label>
+                    <select name="year" class="form-select">
+                        @for (int i = DateTime.Now.Year - 3; i <= DateTime.Now.Year; i++)
+                        {
+                            <!option value="@i" @(ViewBag.SelectedYear == i ? "selected" : "")>@i</!option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end mb-1">
+                    <button type="submit" class="btn btn-primary w-100">🔍 Filter Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Area Grafik -->
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white fw-bold">
+                    Struktur Pengeluaran Bulan Ini
+                </div>
+                <div class="card-body">
+                    @if (expenseData == null || !expenseData.Any())
+                    {
+                        <div class="text-center py-5 text-muted">
+                            <p>Tidak ada data pengeluaran pada periode ini.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <canvas id="expenseChart" style="max-height: 350px;"></canvas>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load Chart.js dari CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Parsing data dari C# ViewBag ke JavaScript
+        const rawData = @Html.Raw(Json.Serialize(expenseData));
+
+        if (rawData && rawData.length > 0) {
+            const labels = rawData.map(item => item.category);
+            const values = rawData.map(item => item.total);
+
+            const ctx = document.getElementById('expenseChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut', // Bisa diganti 'bar' atau 'pie'
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Pengeluaran (Rp)',
+                        data: values,
+                        backgroundColor: [
+                            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+    });
+</script>
