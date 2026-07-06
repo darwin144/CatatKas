@@ -2,6 +2,10 @@
 bin/
 obj/
 
+# Visual Studio cache
+.vs/
+
+
 # User-specific files
 *.user
 *.rsuser
@@ -12,8 +16,7 @@ obj/
 # Logs
 *.log
 
-# Visual Studio cache
-.vs/
+
 
 # NuGet packages
 *.nupkg
