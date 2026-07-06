@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "";
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+@using (Html.BeginForm("Login", "Home", new { area = "Website" }, FormMethod.Post, true, new { @class = "h-100" }))
+{
+        @Html.AntiForgeryToken()
+        @Html.Hidden("ReturnUrl", (string)ViewBag.ReturnUrl)
+
+    <body>
+        <div class="d-flex align-items-center justify-content-center bg-light" style="height:100vh;">
+             <div class="card shadow-lg" style="width: 400px;">
+            <div class="card-header text-center bg-primary text-white">
+                <h4 class="mb-0">Loan Application</h4>
+            </div>
+            <div class="card-body p-4">
+
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div id="alertMessage" class="alert alert-danger text-center" role="alert">
+                            @ViewBag.Message
+                        </div>
+                    }
+
+                <h5 class="text-center mb-3">Sign into your account</h5>
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label for="user_id" class="form-label">Username</label>
+                    <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Enter username" required />
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="user_password" class="form-label">Password</label>
+                    <input type="password" id="user_password" name="user_password" class="form-control" placeholder="Enter password" required />
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </div>
+            <div class="card-footer text-center small text-muted">
+                © 2026 PT. Datacaraka Solusindo
+            </div>
+        </div>
+        </div>
+        <!-- jQuery & Bootstrap JS -->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            // Contoh interaksi jQuery: validasi sederhana
+            $(function () {
+                $("form").on("submit", function (e) {
+                    if ($("#user_id").val().trim() === "" || $("#user_password").val().trim() === "") {
+                        e.preventDefault();
+                        alert("Username dan Password wajib diisi!");
+                    }
+                });
+
+
+                // remove message dalam 3 detik
+                setTimeout(function () {
+                    $("#alertMessage").fadeOut("slow");
+                }, 3000);
+            });
+        </script>
+    </body>
+}
+</html>

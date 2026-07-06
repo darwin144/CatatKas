@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\Project\\CatatKas\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9286D74C-C8CC-2C40-0F1A-77DA56540D94}|CatatKas.Tests\\CatatKas.Tests.csproj|d:\\project\\catatkas\\catatkas.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9286D74C-C8CC-2C40-0F1A-77DA56540D94}|CatatKas.Tests\\CatatKas.Tests.csproj|solutionrelative:catatkas.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|d:\\project\\catatkas\\catatkas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|solutionrelative:catatkas\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|d:\\project\\catatkas\\catatkas\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|solutionrelative:catatkas\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|d:\\project\\catatkas\\catatkas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9BD9720-EEFA-4928-AC3D-C009C0AC4E61}|CatatKas\\CatatKas.csproj|solutionrelative:catatkas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +31,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Project\\CatatKas\\CatatKas\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "CatatKas\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Project\\CatatKas\\CatatKas\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "CatatKas\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAuAAAAAAAAAA==",
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "D:\\Project\\CatatKas\\CatatKas.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "CatatKas.Tests\\UnitTest1.cs",
+              "ToolTip": "D:\\Project\\CatatKas\\CatatKas.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "CatatKas.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAEEAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T08:21:20.002Z",
+              "WhenOpened": "2026-07-06T08:25:24.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\CatatKas\\CatatKas\\Program.cs",
+              "RelativeDocumentMoniker": "CatatKas\\Program.cs",
+              "ToolTip": "D:\\Project\\CatatKas\\CatatKas\\Program.cs",
+              "RelativeToolTip": "CatatKas\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-06T07:45:16.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Project\\CatatKas\\CatatKas\\appsettings.json",
-              "RelativeDocumentMoniker": "CatatKas\\appsettings.json",
-              "ToolTip": "D:\\Project\\CatatKas\\CatatKas\\appsettings.json",
-              "RelativeToolTip": "CatatKas\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-03T08:20:36.134Z"
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Project\\CatatKas\\CatatKas\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CatatKas\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Project\\CatatKas\\CatatKas\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CatatKas\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAgwC4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T08:21:20.002Z",
+              "EditorCaption": ""
             }
           ]
         }

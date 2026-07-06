@@ -1,0 +1,28 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Visual Studio cache
+.vs/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Config files yang sensitif
+appsettings.json
+appsettings.*.json
+
+# Test results
+TestResults/
